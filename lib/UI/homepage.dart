@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:appcv/UI/bodypage.dart';
 import 'package:appcv/UI/sidemenu.dart';
 import 'package:appcv/bloc/homepage/home_page_bloc.dart';
@@ -13,6 +11,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     bool sideMenuIsOpen = false;
+    context.read<HomePageBloc>().add(HomePageEvent1(isActive: false,nomMenu: 'Compétences'));
     return Container(
       color: const Color(0xFF172031),
       child: Stack(
@@ -42,15 +41,31 @@ class HomePage extends StatelessWidget {
                 child: AnimatedScale(
                     duration: const Duration(milliseconds: 200),
                     scale: sideMenuIsOpen ? 1 : 0.8,
-                    child: const ClipRRect(
+                    child: ClipRRect(
                         borderRadius: BorderRadius.all(Radius.circular(24)),
-                        child: BodyPage()
+                        child: GestureDetector(
+                          child: BodyPage(),
+                            onHorizontalDragEnd: (DragEndDetails details){
+                            if(details.primaryVelocity! > 0){
+                              context.read<HomePageBloc>().add(HomePageEvent1(isActive: false,nomMenu: state.nomMenu));
+                            }
+                            }
+                        )
                     )
                 ),
               );
             },
           ),
-          ButtonMenu(),
+          BlocBuilder<HomePageBloc, HomePageState>(
+            builder: (context, state) {
+              return AnimatedPositioned(
+                duration: Duration(milliseconds: 200),
+                left: sideMenuIsOpen? 10:254,
+                  top: sideMenuIsOpen? 0 : 50,
+                  child: ButtonMenu()
+              );
+            },
+          ),
         ],
       ),
     );

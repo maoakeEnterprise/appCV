@@ -1,5 +1,3 @@
-import 'package:appcv/UI/homepage.dart';
-import 'package:appcv/UI/homepage.dart';
 import 'package:appcv/bloc/homepage/home_page_bloc.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -12,10 +10,9 @@ class ButtonMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     bool isActive = false;
-    context.read<HomePageBloc>().add(HomePageEvent1(isActive: false));
     return SafeArea(
       child: Padding(
-        padding: const EdgeInsets.only(top:10,left: 310),
+        padding: const EdgeInsets.only(top:10),
         child: BlocBuilder<HomePageBloc, HomePageState>(
           builder: (context, state) {
             if(state is HomePageState1){

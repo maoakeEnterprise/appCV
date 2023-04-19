@@ -1,5 +1,3 @@
-import 'package:appcv/UI/homepage.dart';
-import 'package:appcv/bloc/blocMenuSideBar/sidemenubloc_bloc.dart';
 import 'package:appcv/bloc/homepage/home_page_bloc.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -53,7 +51,7 @@ class SideMenuTile extends StatelessWidget {
   IconData getIconMenu(String nomMenu) {
     const map = {
       'Compétences': Icons.schema_outlined,
-      'Expériences': Icons.content_paste_sharp,
+      'Expériences Développeur': Icons.content_paste_sharp,
       'Parcours': Icons.school_outlined,
       'Projet Application': Icons.ad_units_rounded,
       'Autre': Icons.contact_support

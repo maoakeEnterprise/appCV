@@ -37,7 +37,7 @@ class _SideBarMenuState extends State<SideBarMenu> {
               color: Colors.grey,
             ),
             SideMenuTile(nomMenu: 'Compétences'),
-            SideMenuTile(nomMenu: 'Expériences'),
+            SideMenuTile(nomMenu: 'Expériences Développeur'),
             SideMenuTile(nomMenu: 'Parcours'),
             SideMenuTile(nomMenu: 'Projet Application'),
             SideMenuTile(nomMenu: 'Autre'),
